@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'SFMono';
+  src: url('/fonts/SFMono-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFMono';
+  src: url('/fonts/SFMono-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'SFMono', monospace;
+  padding: 16px;
+}

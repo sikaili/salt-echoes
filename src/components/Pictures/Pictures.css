@@ -1,0 +1,28 @@
+.Pictures {
+  text-align: left;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+  align-items: start;
+  justify-content: center; /* Center the entire grid inside the container */
+}
+
+.Pictures h4 {
+  width: 100%;
+  text-align: left;
+}
+
+.Pictures img {
+  width: 100%; /* Make images fill their cell, you can adjust this as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 8px 0;
+}
+
+/* Smaller screens: use Flexbox for single column layout */
+@media (max-width: 768px) {
+  .Pictures {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

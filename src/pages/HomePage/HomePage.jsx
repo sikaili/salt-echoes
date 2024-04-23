@@ -1,15 +1,15 @@
-import "./home-page.css";
-// import Upcoming from '../components/Upcoming';
-import { ReactP5Wrapper } from "@p5-wrapper/react";
-import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
-import ToggleLink from "@components/ToggleLink/ToggleLink";
-import Pictures from "@components/Pictures/Pictures";
-import Videos from "@components/Videos/Videos";
-import Past from "@components/Past/Past";
-import Contact from "@components/Contact/Contact";
 import Input from "@components/Input/Input";
-import Equipments from "@components/Gear/Gear";
+import ToggleLink from "@components/ToggleLink/ToggleLink";
+import { ReactP5Wrapper } from "@p5-wrapper/react";
+import Contact from "@pages/Contact/Contact";
+import Equipments from "@pages/Gear/Gear";
+import Past from "@pages/Past/Past";
+import Pictures from "@pages/Pictures/Pictures";
+import Videos from "@pages/Videos/Videos";
 import shapeInSpace from "@sketches/shapeInSpace";
+import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
+
+import "./home-page.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -92,7 +92,7 @@ const HomePage = () => {
           <Route path="/pics" element={<Pictures pics={pics} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
-        <Input></Input>
+        <Input />
       </div>
       <ReactP5Wrapper sketch={shapeInSpace} />
     </div>

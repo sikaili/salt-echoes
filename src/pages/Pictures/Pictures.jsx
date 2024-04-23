@@ -1,18 +1,18 @@
-import { useState } from "react";
-import "./pictures.css";
+import { useState } from 'react';
+import './pictures.css';
 // Ipics = {
 //   src: "",
 // };
 function Pictures({ pics }) {
-  const [currentBackground, setCurrentBackground] = useState("");
+  const [currentBackground, setCurrentBackground] = useState('');
   return (
     <>
       <h4>Passé Imprimé:</h4>
       <div className="pictures">
-        {pics.map((item) => (
+        {pics.map(item => (
           <img
             onMouseEnter={() => setCurrentBackground(item.src)}
-            onMouseLeave={() => setCurrentBackground("")}
+            onMouseLeave={() => setCurrentBackground('')}
             src={item.src}
             key={item.src}
           />

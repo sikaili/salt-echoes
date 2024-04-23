@@ -1,4 +1,4 @@
-import "./videos.css";
+import './videos.css';
 function Videos() {
   return (
     <>

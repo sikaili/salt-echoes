@@ -12,7 +12,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'prettier'],
+  plugins: ['react-refresh', 'prettier', 'import'], // Added 'import' plugin
   rules: {
     'react/jsx-no-target-blank': 'off',
     "react/prop-types": "off", // Disable prop-types rule
@@ -21,5 +21,13 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'prettier/prettier': ['error'], // Enforces Prettier rules
+    'import/order': ['error', {
+      'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+      'newlines-between': 'always',
+      'alphabetize': {
+        'order': 'asc',
+        'caseInsensitive': true
+      }
+    }],
   },
 };

@@ -14,6 +14,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'prettier', 'import'], // Added 'import' plugin
   rules: {
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     'react/jsx-no-target-blank': 'off',
     "react/prop-types": "off", // Disable prop-types rule
     'react-refresh/only-export-components': [

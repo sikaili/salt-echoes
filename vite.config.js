@@ -1,6 +1,7 @@
-import { defineConfig } from "vite";
-import React from "@vitejs/plugin-react"; // Changed 'react' to 'React' for consistency
 import path from "path"; // Changed to use ES module import
+
+import React from "@vitejs/plugin-react"; // Changed 'react' to 'React' for consistency
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({

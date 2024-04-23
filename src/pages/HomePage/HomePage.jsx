@@ -1,24 +1,24 @@
-import Input from "@components/Input/Input";
-import ToggleLink from "@components/ToggleLink/ToggleLink";
-import { ReactP5Wrapper } from "@p5-wrapper/react";
-import Contact from "@pages/Contact/Contact";
-import Equipments from "@pages/Gear/Gear";
-import Past from "@pages/Past/Past";
-import Pictures from "@pages/Pictures/Pictures";
-import Videos from "@pages/Videos/Videos";
-import shapeInSpace from "@sketches/shapeInSpace";
-import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
+import Input from '@components/Input/Input';
+import ToggleLink from '@components/ToggleLink/ToggleLink';
+import { ReactP5Wrapper } from '@p5-wrapper/react';
+import Contact from '@pages/Contact/Contact';
+import Equipments from '@pages/Gear/Gear';
+import Past from '@pages/Past/Past';
+import Pictures from '@pages/Pictures/Pictures';
+import Videos from '@pages/Videos/Videos';
+import shapeInSpace from '@sketches/shapeInSpace';
+import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
-import "./home-page.css";
+import './home-page.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const pics = Array(9)
-    .fill("")
+    .fill('')
     .map((item, index) => {
       return {
-        name: "",
-        src: "/imgs/_" + index + ".jpg",
+        name: '',
+        src: '/imgs/_' + index + '.jpg',
       };
     })
     .reverse();
@@ -31,7 +31,7 @@ const HomePage = () => {
             className="header"
             onClick={() => {
               window.sk.backgroundColor = Math.random() * 256;
-              navigate("/");
+              navigate('/');
             }}
           >
             <h1 className="header__title">Studio Salt Echoes</h1>
@@ -46,7 +46,7 @@ const HomePage = () => {
           >
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "menu-item menu-item--active" : "menu-item"
+                isActive ? 'menu-item menu-item--active' : 'menu-item'
               }
               to="/past"
             >
@@ -54,7 +54,7 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "menu-item menu-item--active" : "menu-item"
+                isActive ? 'menu-item menu-item--active' : 'menu-item'
               }
               to="/contact"
             >
@@ -62,7 +62,7 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "menu-item menu-item--active" : "menu-item"
+                isActive ? 'menu-item menu-item--active' : 'menu-item'
               }
               to="/gear"
             >
@@ -70,9 +70,9 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "menu-item menu-item--active" : "menu-item"
+                isActive ? 'menu-item menu-item--active' : 'menu-item'
               }
-              to={"/pics"}
+              to={'/pics'}
             >
               Passé Imprimé
             </ToggleLink>

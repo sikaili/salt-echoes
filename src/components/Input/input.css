@@ -1,5 +1,5 @@
 /* Remove default input styles */
-.InputForm input {
+.input-form input {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -21,13 +21,13 @@
   border-radius: 4px;
 }
 
-.InputForm {
+.input-form {
   margin-top: 24px;
   /* padding: 8px; */
 }
 
 /* Remove default button styles */
-.InputButton {
+.input-button {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -47,7 +47,7 @@
   border-radius: 4px;
 }
 
-.ErrorMessage {
+.error-message {
   margin: 8px 4px 4px 0;
   color: rgb(100, 0, 0);
 }

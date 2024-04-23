@@ -1,19 +1,18 @@
-import "./HomePage.css";
+import "./home-page.css";
 // import Upcoming from '../components/Upcoming';
 import { ReactP5Wrapper } from "@p5-wrapper/react";
 import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
-import ToggleLink from "../components/ToggleLink/ToggleLink";
-import Pictures from "../components/Pictures/Pictures";
-import Videos from "../components/Videos/Videos";
-import Past from "../components/Past/Past";
-import Contact from "../components/Contact/Contact";
-import Input from "../components/Input/Input";
-import Equipments from "../components/Gear/Gear";
-import shapeInSpace from "../sketches/shapeInSpace";
+import ToggleLink from "@components/ToggleLink/ToggleLink";
+import Pictures from "@components/Pictures/Pictures";
+import Videos from "@components/Videos/Videos";
+import Past from "@components/Past/Past";
+import Contact from "@components/Contact/Contact";
+import Input from "@components/Input/Input";
+import Equipments from "@components/Gear/Gear";
+import shapeInSpace from "@sketches/shapeInSpace";
 
 const HomePage = () => {
   const navigate = useNavigate();
-
   const pics = Array(9)
     .fill("")
     .map((item, index) => {
@@ -26,28 +25,28 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="MainContainer">
-        <div className="TopSection">
+      <div className="main-container">
+        <div className="top-section">
           <div
-            className="Header"
+            className="header"
             onClick={() => {
               window.sk.backgroundColor = Math.random() * 256;
               navigate("/");
             }}
           >
-            <h1 className="Header__title">Studio Salt Echoes</h1>
-            <p className="Header__address">91 rue st antoine 75004 Paris</p>
-            {/* <img className="Header__icon" src="./icon.svg" /> */}
+            <h1 className="header__title">Studio Salt Echoes</h1>
+            <p className="header__address">91 rue st antoine 75004 Paris</p>
+            {/* <img className="header__icon" src="./icon.svg" /> */}
           </div>
           <div
-            className="Menu"
+            className="menu"
             onClick={() => {
               window.sk.backgroundColor = Math.random() * 255;
             }}
           >
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "MenuItem MenuItem--active" : "MenuItem"
+                isActive ? "menu-item menu-item--active" : "menu-item"
               }
               to="/past"
             >
@@ -55,7 +54,7 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "MenuItem MenuItem--active" : "MenuItem"
+                isActive ? "menu-item menu-item--active" : "menu-item"
               }
               to="/contact"
             >
@@ -63,7 +62,7 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "MenuItem MenuItem--active" : "MenuItem"
+                isActive ? "menu-item menu-item--active" : "menu-item"
               }
               to="/gear"
             >
@@ -71,7 +70,7 @@ const HomePage = () => {
             </ToggleLink>
             <ToggleLink
               className={({ isActive }) =>
-                isActive ? "MenuItem MenuItem--active" : "MenuItem"
+                isActive ? "menu-item menu-item--active" : "menu-item"
               }
               to={"/pics"}
             >
@@ -79,7 +78,7 @@ const HomePage = () => {
             </ToggleLink>
           </div>
         </div>
-        <p className="Description">
+        <p className="description">
           Cozy corner for sonic experimentation and collaboration in central
           Paris, non-profit studio with top-tier gear.
         </p>
@@ -89,12 +88,9 @@ const HomePage = () => {
           <Route path="/past" element={<Past />} />
           <Route path="/gear" element={<Equipments />} />
           <Route path="/contact" element={<Contact />} />
-
           <Route path="/info" element={<div>Information Content</div>} />
           <Route path="/pics" element={<Pictures pics={pics} />} />
           <Route path="*" element={<Navigate replace to="/" />} />
-
-          {/* Add other routes as needed */}
         </Routes>
         <Input></Input>
       </div>

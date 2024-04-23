@@ -1,5 +1,4 @@
-import React from "react";
-import "./Video.css";
+import "./videos.css";
 function Videos() {
   return (
     <>

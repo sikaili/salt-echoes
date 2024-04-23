@@ -1,4 +1,4 @@
-.Gear img {
+.gear img {
   z-index: -1;
   position: fixed;
   width: 100vw; /* 100% of the viewport width */

@@ -6,20 +6,19 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
-    "prettier",
+    'plugin:prettier/recommended',
+    'prettier', // Make sure this is the last configuration in the extends array
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'prettier'],
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
-    "indent": ["error", 2, { "SwitchCase": 1 }], // Enforce 2-space indentation
-    "react/jsx-indent": ["error", 2], // Enforce 2-space indentation in JSX
-    "react/jsx-indent-props": ["error", 2], // Enforce 2-space indentation for props
+    'prettier/prettier': ['error'], // Enforces Prettier rules
   },
-}
+};

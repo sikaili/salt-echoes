@@ -1,4 +1,5 @@
-const setListeners = (sk, Tone) => { //eslint-disable-line
+const setListeners = (sk, Tone) => {
+  //eslint-disable-line
   const divNode = document.querySelector('body');
   divNode.addEventListener(
     'click',
@@ -13,7 +14,7 @@ const setListeners = (sk, Tone) => { //eslint-disable-line
         //
       }
     },
-    { once: true, passive: false },
+    { once: true, passive: false }
   );
   divNode.addEventListener(
     'touchstart',
@@ -28,23 +29,15 @@ const setListeners = (sk, Tone) => { //eslint-disable-line
         //
       }
     },
-    { once: true, passive: false },
+    { once: true, passive: false }
   );
-  divNode.addEventListener(
-    'touchstart',
-    sk.handleTouchStart,
-    {
-      passive: false,
-    },
-  );
+  divNode.addEventListener('touchstart', sk.handleTouchStart, {
+    passive: false,
+  });
 
-  divNode.addEventListener(
-    'mousedown',
-    sk.handleTouchStart,
-    {
-      passive: false,
-    },
-  );
+  divNode.addEventListener('mousedown', sk.handleTouchStart, {
+    passive: false,
+  });
 
   divNode.addEventListener('touchend', sk.handleTouchEnd, {
     passive: false,
@@ -56,21 +49,13 @@ const setListeners = (sk, Tone) => { //eslint-disable-line
 
   divNode.addEventListener(
     'ontouchmove',
-    (m) => {
+    m => {
       m.preventDefault();
     },
-    { passive: false },
+    { passive: false }
   );
 
-  divNode.addEventListener(
-    'touchmove',
-    sk.handleTouchMove,
-    { passive: false },
-  );
-  divNode.addEventListener(
-    'mousemove',
-    sk.handleTouchMove,
-    { passive: false },
-  );
+  divNode.addEventListener('touchmove', sk.handleTouchMove, { passive: false });
+  divNode.addEventListener('mousemove', sk.handleTouchMove, { passive: false });
 };
 export default setListeners;

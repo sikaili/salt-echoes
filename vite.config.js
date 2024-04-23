@@ -12,13 +12,10 @@ export default defineConfig({
           // Check if the module is from node_modules
           if (id.includes('node_modules')) {
             // Group dependencies into chunks by package
-            return id
-              .split('node_modules/')[1]
-              .split('/')[0]
-              .replace('@', ''); // Handle scoped packages
+            return id.split('node_modules/')[1].split('/')[0].replace('@', ''); // Handle scoped packages
           }
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });

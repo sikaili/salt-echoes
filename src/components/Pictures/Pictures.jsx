@@ -1,23 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Pictures.css'
-function Pictures() {
-  const hrefs = Array(5).fill('').map((item,index)=>{
-    return {
-      name: "",
-      src: "/imgs/_"+index+".jpg"
-    }
-  }).reverse();
+function Pictures({pics}) {
+  const [currentBackground, setCurrentBackground] = useState('')
   return (
-    <div className='Pictures'>
+    <>
       <h4>
-        Passé Composé:
+        Passé Imprimé:
       </h4>
-      {
-        hrefs.map(item=>(
-          <img  src={item.src} key={item.src}/>
-        ))
-      }
-    </div>
+      <div className='Pictures'>
+        {
+          pics.map(item=>(
+            <img  
+              onMouseEnter={() => setCurrentBackground(item.src)}
+              onMouseLeave={() => setCurrentBackground('')}
+              src={item.src} key={item.src}/>
+          ))
+        }
+      </div>
+      {currentBackground&& <img className="BackgroundPicture" src={currentBackground} />}
+    </>
   )
 }
 

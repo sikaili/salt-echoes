@@ -1,0 +1,9 @@
+.Gear img {
+  z-index: -1;
+  position: fixed;
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  left: 0;
+  top: 0;
+  object-fit: cover; /* This will cover the entire viewport without stretching the image */
+}

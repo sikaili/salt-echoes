@@ -26,3 +26,14 @@
     align-items: center;
   }
 }
+
+.BackgroundPicture {
+  z-index: -1;
+  position: fixed;
+  opacity: 0.7;
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  left: 0;
+  top: 0;
+  object-fit: cover; /* This will cover the entire viewport without stretching the image */
+}

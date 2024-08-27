@@ -79,8 +79,8 @@ const HomePage = () => {
           </div>
         </div>
         <p className="description">
-          Cozy corner for experimentation and collaboration in central
-          Paris, non-profit studio with top-tier gear.
+          Cozy corner for experimentation and collaboration in central Paris,
+          non-profit studio with top-tier gear.
         </p>
 
         <Routes>

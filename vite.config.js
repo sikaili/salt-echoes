@@ -1,17 +1,17 @@
-import path from "path"; // Changed to use ES module import
+import path from 'path'; // Changed to use ES module import
 
-import React from "@vitejs/plugin-react"; // Changed 'react' to 'React' for consistency
-import { defineConfig } from "vite";
+import React from '@vitejs/plugin-react'; // Changed 'react' to 'React' for consistency
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [React()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@sketches": path.resolve(__dirname, "./src/sketches"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@sketches': path.resolve(__dirname, './src/sketches'),
+      '@pages': path.resolve(__dirname, './src/pages'),
     },
   },
   build: {
@@ -20,14 +20,14 @@ export default defineConfig({
         // Organize chunks manually
         manualChunks(id) {
           // Check if the module is from node_modules
-          if (id.includes("node_modules")) {
+          if (id.includes('node_modules')) {
             // Group dependencies into chunks by package
             // Correctly handling scoped packages like @vue, @angular etc.
             const packageName = id.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
             )[1];
-            return packageName.includes("@")
-              ? packageName.split("/")[0] + packageName.split("/")[1]
+            return packageName.includes('@')
+              ? packageName.split('/')[0] + packageName.split('/')[1]
               : packageName;
           }
         },

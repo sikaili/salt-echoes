@@ -1,5 +1,4 @@
 const setListeners = (sk, Tone) => {
-  //eslint-disable-line
   const divNode = document.querySelector('body');
   divNode.addEventListener(
     'click',

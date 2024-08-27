@@ -6,7 +6,8 @@ export const listIframe = [
   {
     name: 'Impro 2 + 2 08/23/2024',
     src: 'https://www.youtube.com/embed/brwjhfqM8z4',
-    participants: 'Antonean Diaz, Sikai Li, Tiona Andrianaivomananjaona, Xi Rojin',
+    participants:
+      'Antonean Diaz, Sikai Li, Tiona Andrianaivomananjaona, Xi Rojin',
   },
   {
     name: 'Impro Hadéen.V 04/19/2024',
@@ -15,11 +16,11 @@ export const listIframe = [
   },
 ];
 function Past() {
-
   const listAudio = [
     {
       name: '08/02/2024 ALSTY (extrait)',
-      participants: 'Arthur Caumont, Leah Welsch, Sikai Li, Tina Jander, Yijie Ma',
+      participants:
+        'Arthur Caumont, Leah Welsch, Sikai Li, Tina Jander, Yijie Ma',
       src: '/audio/impro_08_02_arthur_leah_tina_yijie.m4a',
     },
     {
@@ -60,53 +61,58 @@ function Past() {
   ];
   const [selectedParticipant, setSelectedParticipant] = useState(null);
 
-
-  const getAllParticipants = (listAudio)=>{
+  const getAllParticipants = listAudio => {
     let participants = [];
-    listAudio.map(item=>{
-      participants = [...participants, ...item.participants.split(',').map(participant => participant.trim())]
-    })
-    return [...new Set(participants)]
-  }
-  const countParticipantOccurrences = (listAudio) => {
+    listAudio.map(item => {
+      participants = [
+        ...participants,
+        ...item.participants.split(',').map(participant => participant.trim()),
+      ];
+    });
+    return [...new Set(participants)];
+  };
+  const countParticipantOccurrences = listAudio => {
     const count = {};
     listAudio.forEach(item => {
-      item.participants.split(',').map(participant => participant.trim()).forEach(participant => {
-        if (count[participant]) {
-          count[participant]++;
-        } else {
-          count[participant] = 1;
-        }
-      });
+      item.participants
+        .split(',')
+        .map(participant => participant.trim())
+        .forEach(participant => {
+          if (count[participant]) {
+            count[participant]++;
+          } else {
+            count[participant] = 1;
+          }
+        });
     });
     return count;
   };
 
-  
-
   const [filter, setFilter] = useState(null);
-  useEffect(()=>{
+  useEffect(() => {
     const allParticipants = getAllParticipants(listAudio).sort();
     const participantCounts = countParticipantOccurrences(listAudio);
-    setFilter([{
-      filterName:'Name',
-      filterItems: allParticipants.map(participant => ({
-        name: participant,
-        count: participantCounts[participant],
-      })),    }]);
-  },[])
+    setFilter([
+      {
+        filterName: 'Name',
+        filterItems: allParticipants.map(participant => ({
+          name: participant,
+          count: participantCounts[participant],
+        })),
+      },
+    ]);
+  }, []);
 
-
-
-  const handleFilterClick = (participant) => {
-    setSelectedParticipant(selectedParticipant === participant ? null : participant);
+  const handleFilterClick = participant => {
+    setSelectedParticipant(
+      selectedParticipant === participant ? null : participant
+    );
     filterRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-
   const filteredListAudio = selectedParticipant
-  ? listAudio.filter(item => item.participants.includes(selectedParticipant))
-  : listAudio;
+    ? listAudio.filter(item => item.participants.includes(selectedParticipant))
+    : listAudio;
   const filterRef = useRef(null);
 
   return (
@@ -128,19 +134,20 @@ function Past() {
           </div>
         ))}
       </div>
-      {filter && filter.map((filterItem, index) => (
-        <div key={index} className='filter' ref={filterRef}>
-          {filterItem.filterItems.map((item, itemIndex) => (
+      {filter &&
+        filter.map((filterItem, index) => (
+          <div key={index} className="filter" ref={filterRef}>
+            {filterItem.filterItems.map((item, itemIndex) => (
               <button
-              key={itemIndex}
-              onClick={() => handleFilterClick(item.name)}
-              className={`filterButton ${selectedParticipant === item.name ? 'selected' : ''}`}
-            >
-              {item.name} ({item.count})
-            </button>
-          ))}
-        </div>
-      ))}
+                key={itemIndex}
+                onClick={() => handleFilterClick(item.name)}
+                className={`filterButton ${selectedParticipant === item.name ? 'selected' : ''}`}
+              >
+                {item.name} ({item.count})
+              </button>
+            ))}
+          </div>
+        ))}
 
       {filteredListAudio.map(item => (
         <AudioPlayer

@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 
 function Input() {
   const [submissionStatus, setSubmissionStatus] = useState(null);
-
-  const handleSubmit = async (values, { setSubmitting,resetForm }) => {
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     console.log(values);
+
     try {
       const response = await fetch(
         'https://jn95vlruh0.execute-api.eu-west-1.amazonaws.com/prod/form',

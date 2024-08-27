@@ -79,7 +79,7 @@ const HomePage = () => {
           </div>
         </div>
         <p className="description">
-          Cozy corner for sonic experimentation and collaboration in central
+          Cozy corner for experimentation and collaboration in central
           Paris, non-profit studio with top-tier gear.
         </p>
 

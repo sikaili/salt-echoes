@@ -6,9 +6,7 @@ import * as Yup from 'yup';
 function Input() {
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
-  const handleSubmit = async (values, { setSubmitting }) => {
-    event.preventDefault();
-
+  const handleSubmit = async (values, { setSubmitting,resetForm }) => {
     console.log(values);
     try {
       const response = await fetch(
@@ -26,6 +24,7 @@ function Input() {
 
       if (response.ok) {
         setSubmissionStatus('success');
+        resetForm();
       } else {
         setSubmissionStatus('error');
       }
@@ -36,6 +35,7 @@ function Input() {
 
     setSubmitting(false);
   };
+
   return (
     <Formik
       initialValues={{ email: '' }}
@@ -65,7 +65,9 @@ function Input() {
           {submissionStatus === 'success' && (
             <li className="Info">Email submitted successfully!</li>
           )}
-          {/* {submissionStatus === 'error' && <li className="Info">Error submitting. Please try again later.</li>} */}
+          {submissionStatus === 'error' && (
+            <li className="Info">Error submitting. Please try again later.</li>
+          )}
         </Form>
       )}
     </Formik>

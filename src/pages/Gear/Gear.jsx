@@ -20,10 +20,13 @@ const devices = {
       name: 'Girardin PM82 Console',
     },
     {
-      name: 'Revox PR99',
+      name: 'Revox PR99 MK3',
     },
     {
-      name: 'AKG C414 Microphone',
+      name: 'Neumann KM 184 Stereo Set',
+    },
+    {
+      name: 'AKG C414 XLS',
     },
     {
       name: 'RME Fireface UCX',

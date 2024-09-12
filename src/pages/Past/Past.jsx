@@ -4,6 +4,12 @@ import './past.css';
 import { useEffect, useState, useRef } from 'react';
 export const listIframe = [
   {
+    name: 'Impro Aluminiu, 08/27/2024',
+    src: 'https://www.youtube.com/embed/nklq1Eo1nMo',
+    participants:
+      'Antonean Diaz, Sikai Li, Tiona Andrianaivomananjaona, Xi Rojin',
+  },
+  {
     name: 'Impro 2 + 2 08/23/2024',
     src: 'https://www.youtube.com/embed/brwjhfqM8z4',
     participants:
@@ -141,7 +147,9 @@ function Past() {
               <button
                 key={itemIndex}
                 onClick={() => handleFilterClick(item.name)}
-                className={`filterButton ${selectedParticipant === item.name ? 'selected' : ''}`}
+                className={`filterButton ${
+                  selectedParticipant === item.name ? 'selected' : ''
+                }`}
               >
                 {item.name} ({item.count})
               </button>

@@ -6,6 +6,21 @@ export const piezoExperiment = sk => {
   let mic, meter;
   let audioReady = false;
 
+  let images = [];
+  let numImages = 45; // Number of images to load
+  let unusedImages = [...images]; // Clone the array to track unused images
+
+  sk.preload = () => {
+    for (let i = 1; i <= numImages; i++) {
+      const img = sk.loadImage(
+        `/imgs/bubbles/_${i}.png`,
+        () => console.log(`Image ${i} loaded successfully`),
+        () => console.error(`Image ${i} failed to load`)
+      );
+      images.push(img);
+    }
+  };
+
   sk.setup = function () {
     sk.createCanvas(sk.windowWidth, sk.windowHeight);
     sk.noStroke();
@@ -32,10 +47,11 @@ export const piezoExperiment = sk => {
 
   sk.clouds = [];
 
-  function Cloud(x, y, size) {
+  function Cloud(x, y, size, randomImage) {
     this.x = x;
     this.y = y;
     this.size = size;
+    this.randomImage = randomImage;
     this.frequency = Math.random() + 0.5;
     this.offset = sk.noise(sk.frameCount / 300) * Math.random() * 100;
     this.randomVector = {
@@ -49,56 +65,41 @@ export const piezoExperiment = sk => {
     };
     this.display = () => {
       sk.push();
-      sk.noStroke();
-      sk.fill(
-        sk.noise(sk.frameCount / 250 + this.offset) * size + size,
-        sk.noise(sk.frameCount / 1000 + this.offset) * size,
-        sk.noise(sk.frameCount / this.frequency + this.offset) * size,
-        sk.noise(sk.frameCount / this.frequency) * this.frequency * 255
-      );
-      sk.ellipse(
-        this.x,
-        this.y + (Math.sin(sk.frameCount / this.frequency) * size) / 20,
-        sk.noise(
-          sk.frameCount / ((25 * this.frequency * size) / 100) + this.offset
-        ) * size
-      );
-      sk.ellipse(
-        this.x,
-        this.y,
-        sk.noise(
-          sk.frameCount / ((100 * this.frequency * size) / 100) + this.offset
-        ) * size
-      );
-      sk.ellipse(
-        this.x + (Math.sin(sk.frameCount / this.frequency) * size) / 20,
-        this.y,
-        sk.noise(
-          sk.frameCount / ((5 * this.frequency * size) / 100) + this.offset
-        ) * size
-      );
-      sk.ellipse(
-        this.x +
-          sk.noise(
-            sk.frameCount / ((50 * this.frequency * size) / 100) + this.offset
-          ) *
-            5,
-        this.y,
-        sk.noise(
-          sk.frameCount / ((50 * this.frequency * size) / 100) + this.offset
-        ) * size
-      );
-      sk.textAlign('CENTER');
-      sk.textSize(size / 3);
-      sk.fill(0);
-      sk.text(this.frequency.toString().slice(1, 3), this.x, this.y);
+      // Select a random image
+      // Set random opacity
+      sk.tint(sk.noise(sk.frameCount / 1000 + this.offset) * 500);
+
+      // Randomly adjust position and size based on noise
+      const xOffset =
+        sk.noise(sk.frameCount / 250 + this.offset) * size - size / 2;
+      const yOffset =
+        sk.noise(sk.frameCount / 500 + this.offset) * size - size / 2;
+      sk.translate(this.x + xOffset, this.y + yOffset);
+      sk.rotate((xOffset + yOffset) / 100 + this.offset);
+      const imageSize =
+        size * (2 + sk.noise(sk.frameCount / this.frequency + this.offset));
+
+      // Display the random image at calculated position and size
+      sk.image(this.randomImage, 0, 0, imageSize, imageSize * (sk.gain * 10));
 
       sk.pop();
     };
   }
 
   const createCloud = size => {
-    sk.clouds.push(new Cloud(sk.mouseX, sk.mouseY, size * 2));
+    if (unusedImages.length === 0) {
+      // Reset unused images if all have been used
+      unusedImages = [...images];
+    }
+
+    // Select a random image from the unusedImages array
+    const randomIndex = Math.floor(Math.random() * unusedImages.length);
+    const randomImage = unusedImages.splice(randomIndex, 1)[0]; // Remove and return the image
+
+    sk.clouds.push(new Cloud(sk.mouseX, sk.mouseY, size * 2, randomImage));
+    if (sk.clouds.length > 30) {
+      sk.clouds = sk.clouds.slice(-30); // Retains the last 50 elements
+    }
   };
 
   sk.draw = function () {
@@ -108,7 +109,7 @@ export const piezoExperiment = sk => {
 
       // Convert decibels to gain (amplitude)
       const gain = Tone.dbToGain(volume);
-
+      sk.gain = gain;
       // Only display the gain if it exceeds a certain threshold
       if (gain > 0.1) {
         console.log(gain);

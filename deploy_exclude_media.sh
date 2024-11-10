@@ -8,7 +8,7 @@ BUCKET="s3://salt-echoes"
 npm run build
 
 # Sync directory to S3, excluding the 'dist/audio' and 'dist/fonts' directories
-aws s3 sync $LOCAL_DIR $BUCKET --delete --exclude "audio/*" --exclude "fonts/*"  
+aws s3 sync $LOCAL_DIR $BUCKET --delete  --exclude "fonts/*" --exclude "pdfs/*"  --exclude "audio/*" 
 
 # Invalidate CloudFront distribution
 DISTRIBUTION_ID="E28S0UIIAHTP9"

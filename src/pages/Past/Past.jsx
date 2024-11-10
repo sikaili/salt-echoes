@@ -4,10 +4,14 @@ import './past.css';
 import { useEffect, useState, useRef } from 'react';
 export const listIframe = [
   {
-    name: 'Impro Aluminiu, 08/27/2024',
+    name: 'Impro Corps en Ligne 11/06/2024',
+    src: 'https://www.youtube.com/embed/411XRQcVPRM?si=o_IuU4pkDVotMnUs',
+    participants: 'Chris Parrado, Sikai Li, Jade Tournès',
+  },
+  {
+    name: 'Impro Aluminium 08/27/2024',
     src: 'https://www.youtube.com/embed/nklq1Eo1nMo',
-    participants:
-      'Antonean Diaz, Sikai Li, Tiona Andrianaivomananjaona, Xi Rojin',
+    participants: 'Dunes, Sikai Li, Dorian Campagne',
   },
   {
     name: 'Impro 2 + 2 08/23/2024',
@@ -23,6 +27,11 @@ export const listIframe = [
 ];
 function Past() {
   const listAudio = [
+    {
+      name: '09/13/2024 GBS 04 Sax, Bass, Guitar',
+      participants: 'Graham Farudja, Bach Aoun, Sikai Li',
+      src: '/audio/gbs-09-13.m4a',
+    },
     {
       name: '08/02/2024 ALSTY (extrait)',
       participants:

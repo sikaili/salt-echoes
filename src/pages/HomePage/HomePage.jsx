@@ -13,7 +13,7 @@ import './home-page.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const pics = Array(9)
+  const pics = Array(10)
     .fill('')
     .map((item, index) => {
       return {

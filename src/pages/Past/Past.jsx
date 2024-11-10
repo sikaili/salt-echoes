@@ -76,9 +76,9 @@ function Past() {
   ];
   const [selectedParticipant, setSelectedParticipant] = useState(null);
 
-  const getAllParticipants = listAudio => {
+  const getAllParticipants = list => {
     let participants = [];
-    listAudio.map(item => {
+    list.map(item => {
       participants = [
         ...participants,
         ...item.participants.split(',').map(participant => participant.trim()),
@@ -105,8 +105,9 @@ function Past() {
 
   const [filter, setFilter] = useState(null);
   useEffect(() => {
-    const allParticipants = getAllParticipants(listAudio).sort();
-    const participantCounts = countParticipantOccurrences(listAudio);
+    const listIframeAndAudio = [...listIframe, ...listAudio];
+    const allParticipants = getAllParticipants(listIframeAndAudio).sort();
+    const participantCounts = countParticipantOccurrences(listIframeAndAudio);
     setFilter([
       {
         filterName: 'Name',
@@ -128,13 +129,17 @@ function Past() {
   const filteredListAudio = selectedParticipant
     ? listAudio.filter(item => item.participants.includes(selectedParticipant))
     : listAudio;
+
+  const filteredListIframe = selectedParticipant
+    ? listIframe.filter(item => item.participants.includes(selectedParticipant))
+    : listIframe;
   const filterRef = useRef(null);
 
   return (
     <div className="past">
       <h4>Passé Composé:</h4>
       <div className="video-grid">
-        {listIframe.map(item => (
+        {filteredListIframe.map(item => (
           <div key={item.name} className="video">
             <iframe
               className="iframe1"
